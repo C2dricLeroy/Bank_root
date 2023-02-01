@@ -18,20 +18,24 @@ import { UpdateCustomerDto } from './dto/update-customer.dto';
 export class CustomersController {
   constructor(private readonly customersService: CustomersService) {}
 
-   @Post('create')
-   create(@Body() dto: CreateCustomers) {
-     return this.customersService.create(dto);
-   }
+  // create a new Customer
+  @Post('create')
+  create(@Body() dto: CreateCustomers) {
+    return this.customersService.create(dto);
+  }
 
+  // Return all Customers
   @Get()
   findAll() {
     return this.customersService.findAll();
   }
- 
+
+  // Get a Customer by Id
   @Get(':id') findOne(@Request() req) {
     return this.customersService.getCustomers(parseInt(req.params.id));
   }
 
+  // Update Customer informations by his Id
   @Patch(':id')
   update(
     @Param('id') id: string,
