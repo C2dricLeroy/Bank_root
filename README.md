@@ -1,73 +1,97 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+![GitHub contributors](https://img.shields.io/github/contributors/C2dricLeroy/Bank_root?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/C2dricLeroy/Bank_root?style=for-the-badge)
+![GitHub stars](https://img.shields.io/github/stars/C2dricLeroy/Bank_root?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/C2dricLeroy/Bank_root?style=for-the-badge)
+![GitHub license](https://img.shields.io/github/license/C2dricLeroy/Bank_root?style=for-the-badge)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<h1 align="center">Bank_root</h1>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<div align="center">
 
-## Description
+## Project Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Ths gitHub repository contains a web appication for the fictive bank company Bank_root. 
 
-## Installation
+This project consists of : 
+* An API
+* A Database
+* A Dashboard
 
-```bash
-$ npm install
-```
+In this document, we expose the features of the application and how to use them. 
 
-## Running the app
+</div>
 
-```bash
-# development
-$ npm run start
+## About The Project
 
-# watch mode
-$ npm run start:dev
+### Built With
 
-# production mode
-$ npm run start:prod
-```
+- ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+- ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
+- ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-## Test
+<details>
+<summary><h2>Checklist</h2></summary>
 
-```bash
-# unit tests
-$ npm run test
+- [x] **Choix de la méthodologie (Agile)**
+- [x] **Créer un repo Github**
+- [x] **Créer la structure du repo (Best practice)**
 
-# e2e tests
-$ npm run test:e2e
+  - Dossier
+    - [x] .config
+    - [x] dep
+    - [x] doc
+    - [x] res
+    - [x] samples
+    - [x] tools
+    - [x] build
+    - [x] test
+  - Fichier
+    - [x] LICENCE.md
+    - [x] README.md
+    - [x] .gitattributes
+    - [x] .gitignore
+    - [x] .gitmodules
+    - [x] .dockerignore
 
-# test coverage
-$ npm run test:cov
-```
+- [ ] **Mise en place du Readme**
+- [ ] **Cadrage de la demande client**
+  - [ ] Contexte / Enjeux / Problèmatique
+  - [ ] Questions entretiens
+  - [ ] Persona
+  - [ ] Présentation (PowerPoint)
+  - [ ] Mail de suivie / Proposition stratégique
+- [ ] **Benchmark (Analyse de la concurence)**
+- [ ] **Spécification fonctionnelle**
+  - [ ] Règle de gestion
+  - [ ] UML
+    - [ ] Diagramme d'activité
+    - [ ] Use case
+    - [ ] Diagramme de séquence
+    - [ ] Diagramme de classe
+  - [ ] Merise
+    - [ ] MCD
+    - [ ] MLD
+    - [ ] MPD
+  - [ ] RBAC
+- [ ] **Epic**
+  - [ ] User Story
+  - [ ] Product backlog (Tâches)
+- [ ] **Jira**
+- [ ] **Rituels agiles**
 
-## Support
+  - [ ] Sprint planning meeting
+  - [ ] Stand up meeting
+  - [ ] Sprint retrospective
+  - [ ] Sprint Review
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- [ ] **Démarrer les sprints**
 
-## Stay in touch
+</details>
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Author
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Distributed under the MIT License. `LICENSE` See for more information.
+
+## Ressource
