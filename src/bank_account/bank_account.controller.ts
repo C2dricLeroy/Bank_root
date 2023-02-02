@@ -10,8 +10,10 @@ import {
 import { BankAccountService } from './bank_account.service';
 import { CreateBankAccountDto } from './dto/create-bank_account.dto';
 import { UpdateBankAccountDto } from './dto/update-bank_account.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('bank-account')
+@ApiTags('bank-account')
 export class BankAccountController {
   constructor(private readonly bankAccountService: BankAccountService) {}
 
@@ -20,14 +22,15 @@ export class BankAccountController {
     return this.bankAccountService.create(createBankAccountDto);
   }
 
+  //get all accounts
   @Get()
   findAll() {
     return this.bankAccountService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.bankAccountService.findOne(+id);
+  findOneAccount(@Param('id') id: number) {
+    return this.bankAccountService.getAccount(id);
   }
 
   @Patch(':id')
