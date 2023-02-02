@@ -1,15 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBankAccountDto } from './dto/create-bank_account.dto';
 import { UpdateBankAccountDto } from './dto/update-bank_account.dto';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class BankAccountService {
+  constructor(private prisma: PrismaService) {}
   create(createBankAccountDto: CreateBankAccountDto) {
     return 'This action adds a new bankAccount';
   }
 
   findAll() {
-    return `This action returns all bankAccount`;
+    return this.prisma.bank_account.findMany();
   }
 
   findOne(id: number) {
