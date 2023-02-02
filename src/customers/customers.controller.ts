@@ -8,13 +8,13 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-
+import { ApiProperty, ApiTags } from '@nestjs/swagger';
 import { CustomersService } from './customers.service';
 import { CreateCustomers } from './dto/create-customer.dto.js';
-
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 
-@Controller('customers')
+@Controller('customers') 
+@ApiTags('customers')
 export class CustomersController {
   constructor(private readonly customersService: CustomersService) {}
 
@@ -31,8 +31,9 @@ export class CustomersController {
   }
 
   // Get a Customer by Id
-  @Get(':id') findOne(@Request() req) {
-    return this.customersService.getCustomers(parseInt(req.params.id));
+  @Get(':id') 
+  findOne(@Param('id') id: number){
+    return this.customersService.getCustomers(id);
   }
 
   // Update Customer informations by his Id
@@ -46,7 +47,7 @@ export class CustomersController {
   }
 
   @Delete(':id')
-  delete(@Request() req) {
-    return this.customersService.delete({Id : parseInt(req.params.id)});
+  delete(@Param('id') id: number,) {
+    return this.customersService.delete({ Id: id });
   }
 }
