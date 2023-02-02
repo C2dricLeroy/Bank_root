@@ -1,6 +1,6 @@
 import { CreateCustomers } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
-import { Get, Injectable, Param } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Prisma, Customers } from '@prisma/client';
 
@@ -8,7 +8,7 @@ import { Prisma, Customers } from '@prisma/client';
 export class CustomersService {
   constructor(private prisma: PrismaService) {}
 
-  // Create a new Customer with DTO validation 
+  // Create a new Customer with DTO validation
   async create(dto: CreateCustomers) {
     const newCustomer = await this.prisma.customers.create({
       data: {
@@ -37,7 +37,7 @@ export class CustomersService {
     return await this.customers({ Id: parseInt(customers_id) });
   }
 
-  // Update Customers informations
+  // Update Customers information
   async update(id: number, dto: UpdateCustomerDto) {
     console.log(`The Customer with Id ${id} have been updated. `);
     return this.prisma.customers.update({
@@ -46,17 +46,17 @@ export class CustomersService {
         Firstname: dto.Firstname,
         Lastname: dto.Lastname,
         Username: dto.Username,
-        Password: dto.Password
+        Password: dto.Password,
       },
     });
   }
 
-  // Delete Customers. 
+  // Delete Customers
   async delete(
     customersWhereInput: Prisma.CustomersWhereUniqueInput,
   ): Promise<Customers | null> {
-    console.log(`the Customer with Id ${customersWhereInput.Id} have been deleted.`);
+    console.log(`
+    the Customer with Id ${customersWhereInput.Id} have been deleted.`);
     return this.prisma.customers.delete({ where: customersWhereInput });
   }
-
 }
