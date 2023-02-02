@@ -39,14 +39,23 @@ export class CustomersService {
 
   // Update Customers informations
   async update(id: number, dto: UpdateCustomerDto) {
-    
+    console.log(`The Customer with Id ${id} have been updated. `);
+    return this.prisma.customers.update({
+      where: { Id: id },
+      data: {
+        Firstname: dto.Firstname,
+        Lastname: dto.Lastname,
+        Username: dto.Username,
+        Password: dto.Password
+      },
+    });
   }
 
   // Delete Customers. 
   async delete(
     customersWhereInput: Prisma.CustomersWhereUniqueInput,
   ): Promise<Customers | null> {
-    console.log(`the user with Id ${customersWhereInput.Id} have been deleted.`);
+    console.log(`the Customer with Id ${customersWhereInput.Id} have been deleted.`);
     return this.prisma.customers.delete({ where: customersWhereInput });
   }
 
