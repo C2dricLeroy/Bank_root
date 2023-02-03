@@ -46,6 +46,12 @@ export class BankAccountService {
     });
   }
 
+  async findByUserLastname(user_lastname) {
+    return this.prisma.bank_account.findMany({
+      where: user_lastname,
+    });
+  }
+
   // Delete Id if Balance = 0
   async getBalance(id: number) {
     const account: Bank_account = await this.prisma.bank_account.findUnique({

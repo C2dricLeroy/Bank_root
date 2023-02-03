@@ -22,8 +22,14 @@ export class BankAccountController {
     return this.bankAccountService.create(dto);
   }
 
-  @Post('')
+  // @Post('')
 
+  @Get(':user')
+  findByUserLastname(@Param('user') userLastname: string) {
+    return this.bankAccountService.findByUserLastname({
+      Lastname: userLastname,
+    });
+  }
   //get all accounts
   @Get()
   findAll() {
