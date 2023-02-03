@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { BankAccountService } from './bank_account.service';
 import { CreateBankAccountDto } from './dto/create-bank_account.dto';
-import { UpdateBankAccountDto } from './dto/update-bank_account.dto';
+import { UpdateBank_accountDto } from './dto/update-bank_account.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('bank-account')
@@ -21,6 +21,8 @@ export class BankAccountController {
   create(@Body() dto: CreateBankAccountDto) {
     return this.bankAccountService.create(dto);
   }
+
+  @Post('')
 
   //get all accounts
   @Get()
@@ -36,7 +38,7 @@ export class BankAccountController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateBankAccountDto: UpdateBankAccountDto,
+    @Body() updateBankAccountDto: UpdateBank_accountDto,
   ) {
     return this.bankAccountService.update(+id, updateBankAccountDto);
   }

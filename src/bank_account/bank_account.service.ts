@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBankAccountDto } from './dto/create-bank_account.dto';
-import { UpdateBankAccountDto } from './dto/update-bank_account.dto';
+import { UpdateBank_accountDto } from './dto/update-bank_account.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { Prisma, Bank_account, prisma } from '@prisma/client';
-import { BankAccountController } from './bank_account.controller';
+import { Prisma, Bank_account } from '@prisma/client';
 
 @Injectable()
 export class BankAccountService {
@@ -36,10 +35,18 @@ export class BankAccountService {
     return await this.findOneAccount({ Id: parseInt(bankAccountId) });
   }
 
-  update(id: number, updateBankAccountDto: UpdateBankAccountDto) {
-    return `This action updates a #${id} bankAccount`;
+  // Update bank account information
+  async update(id: number, dto: UpdateBank_accountDto) {
+    console.log(`The bank_account with Id ${id} have been updated. `);
+    return this.prisma.bank_account.update({
+      where: { Id: id },
+      data: {
+        owner_id: dto.owner_id,
+      },
+    });
   }
 
+  // Delete Id if Balance = 0
   async getBalance(id: number) {
     const account: Bank_account = await this.prisma.bank_account.findUnique({
       where: { Id: +id },
