@@ -17,9 +17,9 @@ import { ApiTags } from '@nestjs/swagger';
 export class BankAccountController {
   constructor(private readonly bankAccountService: BankAccountService) {}
 
-  @Post()
-  create(@Body() createBankAccountDto: CreateBankAccountDto) {
-    return this.bankAccountService.create(createBankAccountDto);
+  @Post('create')
+  create(@Body() dto: CreateBankAccountDto) {
+    return this.bankAccountService.create(dto);
   }
 
   //get all accounts
@@ -43,6 +43,6 @@ export class BankAccountController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.bankAccountService.remove(+id);
+    return this.bankAccountService.getBalance(+id);
   }
 }

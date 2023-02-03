@@ -18,7 +18,10 @@ export class CustomersService {
         Password: dto.Password,
       },
     });
-    console.log(`the user ${newCustomer.Firstname} have been created.`);
+    // Appeler ici fonction create account en passant le bon Id
+    console.log(
+      `the user ${newCustomer.Firstname} have been created with the account ....`,
+    );
   }
 
   // Return all Customers

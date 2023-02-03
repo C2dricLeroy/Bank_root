@@ -31,7 +31,7 @@ model Bank_account {
   owner_id    Int
   admin   Admin     @relation(fields: [admin_id], references: [Id])
   admin_id    Int
-  log_id    Int  
+  log_id    Int
   
 }
 
