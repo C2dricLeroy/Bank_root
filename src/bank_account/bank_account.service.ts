@@ -3,6 +3,7 @@ import { CreateBankAccountDto } from './dto/create-bank_account.dto';
 import { UpdateBank_accountDto } from './dto/update-bank_account.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { Prisma, Bank_account } from '@prisma/client';
+import { updateBalanceDTO } from './dto/updateBalanceDTO.dto';
 
 @Injectable()
 export class BankAccountService {
@@ -16,7 +17,7 @@ export class BankAccountService {
         log_id: dto.log_id,
       },
     });
-    console.log(`the bank_account with Id ${newAccount.Id} have been created`);
+    console.log(`the bank_account with Id ${newAccount.Id} has been created`);
   }
 
   findAll() {
@@ -37,7 +38,7 @@ export class BankAccountService {
 
   // Update bank account information
   async update(id: number, dto: UpdateBank_accountDto) {
-    console.log(`The bank_account with Id ${id} have been updated. `);
+    console.log(`The bank_account with Id ${id} has been updated. `);
     return this.prisma.bank_account.update({
       where: { Id: id },
       data: {
@@ -50,6 +51,52 @@ export class BankAccountService {
     return this.prisma.bank_account.findMany({
       where: user_lastname,
     });
+  }
+
+  async addMoney(dto: updateBalanceDTO) {
+    const account = await this.getAccount(dto.Id);
+    if (!account) {
+      return `The account with Id ${dto.Id} does not exist.`;
+    } else {
+      console.log('test');
+      return await this.updateAmount({
+        where: {
+          Id: account.Id,
+        },
+        data: {
+          Balance: account.Balance + dto.amountToAdd,
+        },
+      });
+    }
+  }
+
+  async withdrawMoney(dto: updateBalanceDTO) {
+    const account = await this.getAccount(dto.Id);
+    if (!account) {
+      return `The account with Id ${dto.Id} does not exist.`;
+    } else {
+      console.log('test');
+      return await this.updateAmount({
+        where: {
+          Id: account.Id,
+        },
+        data: {
+          Balance: account.Balance - dto.amountToAdd,
+        },
+      });
+    }
+  }
+
+  async updateAmount(params: {
+    where: any;
+    data: Prisma.Bank_accountUpdateInput;
+  }) {
+    const { where, data } = params;
+    this.prisma.bank_account.update({
+      data,
+      where,
+    });
+    return `The account ${params.where.Id} has been updated. Your new sold is ${data.Balance}`;
   }
 
   // Delete Id if Balance = 0
@@ -67,7 +114,7 @@ export class BankAccountService {
     bankAccountToDelete: Prisma.Bank_accountWhereUniqueInput,
   ): Promise<Bank_account | null> {
     console.log(
-      `The account with id ${bankAccountToDelete.Id} have been deleted`,
+      `The account with id ${bankAccountToDelete.Id} has been deleted`,
     );
     return this.prisma.bank_account.delete({ where: bankAccountToDelete });
   }
