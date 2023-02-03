@@ -91,13 +91,15 @@ export class BankAccountService {
   async updateAmount(params: {
     where: any;
     data: Prisma.Bank_accountUpdateInput;
-  }) {
+  }): Promise<Bank_account> {
     const { where, data } = params;
-    this.prisma.bank_account.update({
+    console.log(
+      `The account ${params.where.Id} has been updated. Your new sold is ${data.Balance}`,
+    );
+    return this.prisma.bank_account.update({
       data,
       where,
     });
-    return `The account ${params.where.Id} has been updated. Your new sold is ${data.Balance}`;
   }
 
   // Delete Id if Balance = 0
