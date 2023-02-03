@@ -70,6 +70,7 @@ export class BankAccountService {
     }
   }
 
+  // Withdraw Money
   async withdrawMoney(dto: updateBalanceDTO) {
     const account = await this.getAccount(dto.Id);
     if (!account) {
