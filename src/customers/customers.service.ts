@@ -1,7 +1,7 @@
 import { CreateCustomers } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { Prisma, Customers } from '@prisma/client';
 
 @Injectable()
@@ -57,7 +57,7 @@ export class CustomersService {
   // Delete Customers
   async delete(
     customersWhereInput: Prisma.CustomersWhereUniqueInput,
-  ): Promise<Customers | null> {
+  ): Promise<Customers | undefined> {
     console.log(`
     the Customer with Id ${customersWhereInput.Id} have been deleted.`);
     return this.prisma.customers.delete({ where: customersWhereInput });
