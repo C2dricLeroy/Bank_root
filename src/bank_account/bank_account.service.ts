@@ -11,7 +11,7 @@ export class BankAccountService {
   async create(dto: CreateBankAccountDto) {
     const newAccount = await this.prisma.bank_account.create({
       data: {
-        Balance: 0,
+        Balance: dto.Balance,
         owner_id: dto.owner_id,
         admin_id: 2,
         log_id: dto.log_id,
@@ -104,12 +104,12 @@ export class BankAccountService {
 
   // Delete Id if Balance = 0
   async getBalance(id: number) {
-    const account: Bank_account = await this.prisma.bank_account.findUnique({
+    const account = await this.prisma.bank_account.findUnique({
       where: { Id: +id },
     });
 
-    return account.Balance !== 0
-      ? 'The account need to be empty to be deleted.'
+    return account?.Balance !== 0
+      ? `The account need to be empty to be deleted. The current sold is ${account?.Balance} `
       : this.remove({ Id: id });
   }
 
