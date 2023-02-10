@@ -44,4 +44,18 @@ describe('CustomersController', () => {
       expect(await controller.findAll()).toBe(mockResult);
     });
   });
+  describe('findOne', () => {
+    it('should return a customer', async () => {
+      const call = 1;
+      const result = {
+        Id: 1,
+        Firstname: 'Cedric',
+        Lastname: 'Lenglart',
+        Username: 'cedric.lenglart',
+        Password: 'test123456',
+      };
+      prisma.customers.findFirst.mockResolvedValue(result);
+      expect(await controller.findOne(call)).toBe(result);
+    });
+  });
 });

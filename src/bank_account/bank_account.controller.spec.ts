@@ -54,4 +54,18 @@ describe('BankAccountController', () => {
       expect(await controller.findOneAccount(call)).toBe(result);
     });
   });
+  /*describe('findUserByUsername', () => {
+    it('should return a customer when given his username', async () => {
+      const call = 'Lenglart';
+      const result = {
+        Id: 1,
+        Firstname: 'Cedric',
+        Lastname: 'Lenglart',
+        Username: 'cedric.lenglart',
+        Password: 'test123456',
+      };
+      prisma.bank_account.findFirst.mockResolvedValue(result);
+      expect(await controller.findByUserLastname(call)).toBe(result);
+    });
+  });*/
 });

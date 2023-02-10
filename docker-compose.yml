@@ -1,0 +1,23 @@
+version: '3'
+services:
+  bank_root:
+    image: bank_root
+    depends_on:
+      - postgres
+    ports:
+      - "80:80"
+    networks:
+      - monreseau
+    environment:
+      - DATABASE_URL: postgresql://postgres:docker@localhost:5432/db-postgres?schema=public
+    build:
+      context: .
+      dockerfile: Dockerfile
+  database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - monreseau
+networks:
+  monreseau:
