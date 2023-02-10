@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BankAccountController } from './bank_account.controller';
 import { BankAccountService } from './bank_account.service';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
-import { PrismaClient } from '@prisma/client';
+import { Bank_account, PrismaClient } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 
 describe('BankAccountController', () => {
@@ -36,6 +36,22 @@ describe('BankAccountController', () => {
       ];
       prisma.bank_account.findMany.mockResolvedValue(result);
       expect(controller).toBeDefined();
+    });
+  });
+
+  describe('findOneAccount', () => {
+    it('should return the customer with the specified Id', async () => {
+      const call = 1;
+      const result = {
+        Id: 1,
+        Balance: 250,
+        RIB: 'test',
+        owner_id: 1,
+        admin_id: 1,
+        log_id: 0,
+      };
+      prisma.bank_account.findFirst.mockResolvedValue(result);
+      expect(await controller.findOneAccount(call)).toBe(result);
     });
   });
 });
