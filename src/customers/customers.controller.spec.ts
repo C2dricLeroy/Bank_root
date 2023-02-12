@@ -78,4 +78,32 @@ describe('CustomersController', () => {
       expect(await controller.create(call)).toBe(result);
     });
   });
+  describe('update', () => {
+    it('should update a customer', async () => {
+      const call = '1';
+      const dto = {
+        Id: 1,
+        Firstname: 'cedric',
+        Lastname: 'leroy',
+        Username: 'cedric.leroy',
+        Password: 'autrepassword',
+      };
+      const result = {
+        Id: 1,
+        Firstname: 'cedric',
+        Lastname: 'leroy',
+        Username: 'cedric.leroy',
+        Password: 'autrepassword',
+      };
+
+      prisma.customers.update.mockResolvedValue(result);
+      expect(await controller.update(call, dto)).toBe(result);
+    });
+  });
+  /*describe('delete', () => {
+    it('should delete a customer', async () => {
+      const call = '5';
+      const result = {};
+    });
+  });*/
 });

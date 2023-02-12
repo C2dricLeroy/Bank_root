@@ -1,7 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from './prisma.service';
+import { PrismaClient } from '@prisma/client';
 
-describe.skip('PrismaService', () => {
+describe('PrismaService', () => {
   let service: PrismaService;
 
   beforeEach(async () => {
@@ -14,5 +15,8 @@ describe.skip('PrismaService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+  it('should be an instance of PrismaClient', () => {
+    expect(service).toBeInstanceOf(PrismaClient);
   });
 });

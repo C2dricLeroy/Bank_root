@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BankAccountController } from './bank_account.controller';
 import { BankAccountService } from './bank_account.service';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
-import { Bank_account, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 
 describe('BankAccountController', () => {
@@ -107,4 +107,22 @@ describe('BankAccountController', () => {
       expect(await controller.create(call)).toBe(result);
     });
   });
+
+  /*describe('remove', () => {
+    it('should delete a bank account when a DTO is passed', async () => {
+      const call = '1';
+      const result = {
+        Id: 9,
+        Balance: 0,
+        RIB: null,
+        owner_id: 1,
+        admin_id: 2,
+        log_id: 1,
+      };
+
+      prisma.bank_account.delete.mockResolvedValue(result);
+      expect(await controller.remove(call)).toBe(result);
+    });
+  });
+  */
 });
