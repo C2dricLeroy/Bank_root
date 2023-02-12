@@ -18,6 +18,7 @@ export class BankAccountService {
       },
     });
     console.log(`the bank_account with Id ${newAccount.Id} has been created`);
+    return newAccount;
   }
 
   findAll() {

@@ -68,4 +68,43 @@ describe('BankAccountController', () => {
       expect(await controller.findByUserLastname(call)).toBe(result);
     });
   });*/
+  /*describe('addCurency', () => {
+    it('should return the balance of the account + the specified amount', async () => {
+      const call = {
+        Id: 1,
+        amountToAdd: 100,
+      };
+      const result = {
+        Id: 1,
+        Balance: 350,
+        RIB: 'testRIB1',
+        owner_id: 2,
+        admin_id: 2,
+        log_id: 0,
+      };
+      prisma.bank_account.update.mockResolvedValue(result);
+      expect(await controller.addCurency(call)).toBe(result);
+    });
+  });*/
+  describe('create', () => {
+    it('should create a new bank account when a DTO is passed', async () => {
+      const call = {
+        Balance: 0,
+        owner_id: 2,
+        admin_id: 2,
+        log_id: 0,
+      };
+      const result = {
+        Id: 3,
+        RIB: null,
+        Balance: 0,
+        owner_id: 1,
+        admin_id: 1,
+        log_id: 1,
+      };
+
+      prisma.bank_account.create.mockResolvedValue(result);
+      expect(await controller.create(call)).toBe(result);
+    });
+  });
 });
