@@ -58,4 +58,24 @@ describe('CustomersController', () => {
       expect(await controller.findOne(call)).toBe(result);
     });
   });
+  describe('create', () => {
+    it('should create a new customer', async () => {
+      const call = {
+        Firstname: 'string',
+        Lastname: 'string',
+        Password: 'test123456',
+        Username: 'test.test',
+      };
+      const result = {
+        Id: 7,
+        Firstname: 'string',
+        Lastname: 'string',
+        Username: 'test.test',
+        Password: 'test123456',
+      };
+
+      prisma.customers.create.mockResolvedValue(result);
+      expect(await controller.create(call)).toBe(result);
+    });
+  });
 });

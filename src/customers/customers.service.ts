@@ -22,6 +22,7 @@ export class CustomersService {
     console.log(
       `the user ${newCustomer.Firstname} have been created with the account ....`,
     );
+    return newCustomer;
   }
 
   // Return all Customers
