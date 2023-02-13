@@ -9,6 +9,10 @@ describe('BankAccountController', () => {
   let controller: BankAccountController;
   let prisma: DeepMockProxy<PrismaClient>;
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [BankAccountController],
@@ -107,22 +111,4 @@ describe('BankAccountController', () => {
       expect(await controller.create(call)).toBe(result);
     });
   });
-
-  /*describe('remove', () => {
-    it('should delete a bank account when a DTO is passed', async () => {
-      const call = '1';
-      const result = {
-        Id: 9,
-        Balance: 0,
-        RIB: null,
-        owner_id: 1,
-        admin_id: 2,
-        log_id: 1,
-      };
-
-      prisma.bank_account.delete.mockResolvedValue(result);
-      expect(await controller.remove(call)).toBe(result);
-    });
-  });
-  */
 });
