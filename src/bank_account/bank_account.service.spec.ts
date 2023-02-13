@@ -53,5 +53,22 @@ describe('BankAccountService', () => {
       prisma.bank_account.delete.mockResolvedValue(result);
       expect(await service.remove(result)).toEqual(result);
     });
+
+    describe('getBalance', () => {
+      it('should return the balance of a bank_account when id argument is passed', async () => {
+        const call = 20;
+        const result = {
+          Balance: 0,
+          owner_id: 1,
+          admin_id: 1,
+          log_id: 1,
+          Id: 20,
+          RIB: 'testRIB',
+        };
+
+        prisma.bank_account.findUnique.mockResolvedValue(result);
+        expect(await service.getBalance(call)).not.toBeDefined();
+      });
+    });
   });
 });
