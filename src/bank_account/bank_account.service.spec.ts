@@ -38,4 +38,20 @@ describe('BankAccountService', () => {
       expect(await service.create(user)).toEqual(user);
     });
   });
+
+  describe('delete', () => {
+    it('should delete a bank_account when id argument is passed', async () => {
+      const result = {
+        Balance: 250,
+        owner_id: 1,
+        admin_id: 1,
+        log_id: 1,
+        Id: 20,
+        RIB: 'testRIB',
+      };
+
+      prisma.bank_account.delete.mockResolvedValue(result);
+      expect(await service.remove(result)).toEqual(result);
+    });
+  });
 });
