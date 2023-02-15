@@ -66,8 +66,8 @@ describe('BankAccountService', () => {
           RIB: 'testRIB',
         };
 
-        prisma.bank_account.findUnique.mockResolvedValue(result);
-        expect(await service.getBalance(call)).not.toBeDefined();
+        prisma.bank_account.delete.mockResolvedValue(result);
+        expect(await service.getBalance(call)).toEqual(result);
       });
     });
   });
