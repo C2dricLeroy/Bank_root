@@ -30,9 +30,14 @@ export class CustomersController {
   }
 
   // Get a Customer by Id
-  @Get(':id')
+  @Get('/id/:id')
   findOne(@Param('id') id: number) {
     return this.customersService.getCustomers(id);
+  }
+
+  @Get('/username/:username')
+  findByUserName(@Param('username') username: string) {
+    return this.customersService.findByUsername(username);
   }
 
   // Update Customer information by his Id
