@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { BankAccountService } from './bank_account.service';
 import { CreateBankAccountDto } from './dto/create-bank_account.dto';
@@ -46,7 +47,7 @@ export class BankAccountController {
   }
 
   @Get(':id')
-  findOneAccount(@Param('id') id: number) {
+  findOneAccount(@Param('id', ParseIntPipe) id: number) {
     return this.bankAccountService.getAccount(id);
   }
 

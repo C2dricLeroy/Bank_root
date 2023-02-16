@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CustomersService } from './customers.service';
@@ -31,7 +32,7 @@ export class CustomersController {
 
   // Get a Customer by Id
   @Get('/id/:id')
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id', ParseIntPipe) id: number) {
     return this.customersService.getCustomers(id);
   }
 
@@ -50,7 +51,7 @@ export class CustomersController {
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number) {
+  delete(@Param('id', ParseIntPipe) id: number) {
     return this.customersService.delete({ Id: id });
   }
 }
