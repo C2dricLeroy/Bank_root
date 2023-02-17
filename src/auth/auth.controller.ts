@@ -28,4 +28,10 @@ export class AuthController {
   register() {
     return 'ok';
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
+  }
 }

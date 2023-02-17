@@ -13,6 +13,7 @@ import { CreateBankAccountDto } from './dto/create-bank_account.dto';
 import { UpdateBank_accountDto } from './dto/update-bank_account.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { updateBalanceDTO } from './dto/updateBalanceDTO.dto';
+import { transferDto } from './dto/transfer.dto';
 
 @Controller('bank-account')
 @ApiTags('bank-account')
@@ -62,5 +63,14 @@ export class BankAccountController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.bankAccountService.getBalance(+id);
+  }
+
+  @Post('transfer')
+  transferMoney(@Body() body: transferDto) {
+    return this.bankAccountService.transferMoneyViaId(
+      body.accountOneId,
+      body.accountTwoId,
+      body.amount,
+    );
   }
 }

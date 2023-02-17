@@ -122,4 +122,27 @@ export class BankAccountService {
     );
     return this.prisma.bank_account.delete({ where: bankAccountToDelete });
   }
+
+  async transferMoneyViaId(accountOneId, accountTwoId, amount) {
+    console.log(accountOneId);
+    const accountOne = await this.findOneAccount({ Id: accountOneId });
+    const accountTwo = await this.findOneAccount({ Id: accountTwoId });
+
+    if (!accountOne) {
+      return 'First account is incorrect';
+    }
+    if (!accountTwo) {
+      return 'Second account is incorrect';
+    }
+    if (amount > accountOne.Balance) {
+      return 'Insufficient funds';
+    } else {
+      accountOne.Balance -= amount;
+      accountTwo.Balance += amount;
+      console.log(
+        `${accountOne.Id} has transferred ${amount} to ${accountTwo.Id}`,
+      );
+      return 'Transfer successful';
+    }
+  }
 }
