@@ -39,13 +39,19 @@ export class CustomersService {
   }
 
   async getCustomers(customers_id) {
-    return await this.customers({ Id: parseInt(customers_id) });
+    return await this.customers({ Id: customers_id });
   }
 
-  async findByUsername(username: string): Promise<Customers | null> {
+  /*async findByUsername(username: string): Promise<Customers | null> {
     return this.prisma.customers.findFirst({
       where: { Username: username },
     });
+  }*/
+
+  async findByUsername(
+    customersWhereInput: Prisma.CustomersWhereInput,
+  ): Promise<Customers | null> {
+    return this.prisma.customers.findFirst({ where: customersWhereInput });
   }
 
   // Update Customers information
